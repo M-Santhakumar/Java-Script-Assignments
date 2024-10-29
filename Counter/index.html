@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+    <link rel="icon" href="timer.png">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            border: 3px solid rgb(218, 216, 225);
+            background-image: url(rrr.jpeg);
+
+        }
+        .counter-app {
+            text-align: center;
+                    }
+        .counter {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: rgb(25, 24, 24);
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .start {
+            background-color: #28a745;
+        }
+        .stop {
+            background-color: #dc3545;
+        }
+        .reset {
+            background-color: #007bff;
+        }
+        .button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="counter-app">
+    <div class="counter" id="counter">0</div>
+    <div class="buttons">
+        <button class="button start" onclick="startCounter()">Start</button>
+        <button class="button stop" onclick="stopCounter()">Stop</button>
+        <button class="button reset" onclick="resetCounter()">Reset</button>
+    </div>
+</div>
+
+<script>
+    let counter = 0;
+    let intervalId = null;
+
+    function startCounter() {
+        if (!intervalId) {
+            intervalId = setInterval(() => {
+                counter++;
+                document.getElementById("counter").innerText = counter;
+            }, 1000); // Increase counter every second
+        }
+    }
+
+    function stopCounter() {
+        clearInterval(intervalId);
+        intervalId = null;
+    }
+
+    function resetCounter() {
+        stopCounter(); // Stop the counter if it's running
+        counter = 0;
+        document.getElementById("counter").innerText = counter;
+    }
+</script>
+
+</body>
+</html>
